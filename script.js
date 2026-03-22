@@ -1,24 +1,6 @@
-let number,
-  attempts,
-  maxAttempts = 10,
-  playerName;
-
-function startGame() {
-  playerName = document.getElementById("name").value.trim();
-  if (!playerName) {
-    alert("Masukkan nama terlebih dahulu!");
-    return;
-  }
-  number = Math.floor(Math.random() * 99) + 1;
-  attempts = 0;
-  document.getElementById("setup").style.display = "none";
-  document.getElementById("game").style.display = "block";
-  document.getElementById(
-    "greeting"
-  ).textContent = `Halo ${playerName}, kamu punya ${maxAttempts} kesempatan.`;
-  document.getElementById("message").textContent = "";
-  document.getElementById("attemptsLeft").textContent = maxAttempts;
-}
+const number = Math.floor(Math.random() * 99) + 1;
+let attempts = 0;
+const maxAttempts = 10;
 
 function makeGuess() {
   const guess = parseInt(document.getElementById("guess").value);
@@ -32,15 +14,15 @@ function makeGuess() {
   if (guess < number) {
     document.getElementById(
       "message"
-    ).textContent = `Tebakan kamu terlalu rendah, Turunkan ${playerName}`;
+    ).textContent = `Tebakan kamu terlalu rendah, coba naikkan yaa!`;
   } else if (guess > number) {
     document.getElementById(
       "message"
-    ).textContent = `Tebakan kamu terlalu tinggi, Naikkan ${playerName}`;
+    ).textContent = `Tebakan kamu terlalu tinggi, coba turunkan yaa!`;
   } else {
     document.getElementById(
       "message"
-    ).textContent = `🎉 Selamat ${playerName}, kamu menebak dengan benar!`;
+    ).textContent = `🎉 Selamat, kamu menebak dengan benar!`;
     document.getElementById("guess").disabled = true;
     return;
   }
@@ -55,3 +37,10 @@ function makeGuess() {
     document.getElementById("guess").disabled = true;
   }
 }
+
+// Menangani tombol Enter
+document.getElementById("guess").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    makeGuess();
+  }
+});
