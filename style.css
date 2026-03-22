@@ -10,11 +10,12 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 1rem;
   color: #fff;
 }
 
 .game-container {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #4098df9a;
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -30,7 +31,35 @@ h1 {
   font-size: 1.8rem;
 }
 
-input[type="text"],
+h1 a {
+  text-decoration: none;
+  color: crimson;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+h1 a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #8e0722;
+  bottom: -2px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+h1 a:hover::before {
+  transform: scaleX(1);
+}
+
+/* Remove Arrows/Spinners for Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 input[type="number"] {
   padding: 0.5rem;
   border: none;
@@ -50,6 +79,7 @@ button {
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.3s ease;
+  width: 100%;
 }
 
 button:hover {
@@ -62,6 +92,12 @@ button:hover {
   min-height: 40px;
 }
 
+#game p {
+  color: rgb(172, 228, 5);
+  font-weight: bold;
+  font-size: 20px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -70,5 +106,15 @@ button:hover {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
   }
 }
