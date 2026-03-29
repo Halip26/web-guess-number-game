@@ -12,17 +12,14 @@ function makeGuess() {
 
   attempts++;
   if (guess < number) {
-    document.getElementById(
-      "message"
-    ).textContent = `Tebakan kamu terlalu rendah, coba naikkan yaa!`;
+    document.getElementById("message").textContent =
+      `Tebakan kamu terlalu rendah, coba naikkan yaa!`;
   } else if (guess > number) {
-    document.getElementById(
-      "message"
-    ).textContent = `Tebakan kamu terlalu tinggi, coba turunkan yaa!`;
+    document.getElementById("message").textContent =
+      `Tebakan kamu terlalu tinggi, coba turunkan yaa!`;
   } else {
-    document.getElementById(
-      "message"
-    ).textContent = `🎉 Selamat, kamu menebak dengan benar!`;
+    document.getElementById("message").textContent =
+      `🎉 Selamat, kamu menebak dengan benar!`;
     document.getElementById("guess").disabled = true;
     return;
   }
@@ -31,9 +28,8 @@ function makeGuess() {
   document.getElementById("attemptsLeft").textContent = remaining;
 
   if (remaining <= 0) {
-    document.getElementById(
-      "message"
-    ).textContent = `😢 Kesempatan habis. Angkanya adalah ${number}.`;
+    document.getElementById("message").textContent =
+      `😢 Kesempatan habis. Angkanya adalah ${number}.`;
     document.getElementById("guess").disabled = true;
   }
 }
